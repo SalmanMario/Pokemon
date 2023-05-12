@@ -4,7 +4,7 @@ import { fetchAndParse } from "./fetchAndParse";
 const BASE_URL = "https://pokeapi.co/api/v2";
 
 export interface PokemonInfo {
-  id: number;
+  id: string;
   name: string;
   sprites: {
     other: {
@@ -38,4 +38,8 @@ export interface PokemonInfo {
 
 export function pokemonCall(pokemon: any) {
   return fetchAndParse(`${BASE_URL}/pokemon/${pokemon.name}`);
+}
+
+export function PokemonById(id: string) {
+  return fetchAndParse(`${BASE_URL}/pokemon/${id}`);
 }

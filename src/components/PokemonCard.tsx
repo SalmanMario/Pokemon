@@ -3,14 +3,21 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { PokemonInfo } from "../services/pokemonCall";
-import { Box, Grid } from "@mui/material";
+import { Box, Button, Grid } from "@mui/material";
 import "../App.css";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShieldIcon from "@mui/icons-material/Shield";
 import { RiSwordLine } from "react-icons/ri";
+import { routes, useNavigation } from "../routes";
 
 export default function PokemonCard({ data }: { data: PokemonInfo }) {
   const style = `thumb-container ${data.types[0].type.name}`;
+  const { navigate } = useNavigation();
+
+  const goToPokemon = () => {
+    navigate(routes.pokemonById, { id: data.id.toString(), name: "string" });
+  };
+
   return (
     <Grid sx={{ my: 4 }} item lg={3} md={4} sm={6} xs={12}>
       <Card sx={{ maxWidth: "100%" }}>
@@ -57,12 +64,16 @@ export default function PokemonCard({ data }: { data: PokemonInfo }) {
               alignItems: "center",
               flexDirection: "row",
               textAlign: "center",
+              mb: 2,
             }}
           >
             <Typography variant="h6">{data.stats[0].base_stat}</Typography>
             <Typography variant="h6">{data.stats[1].base_stat}</Typography>
             <Typography variant="h6">{data.stats[2].base_stat}</Typography>
           </Box>
+          <Button onClick={goToPokemon} variant="contained" fullWidth>
+            View Pokemons
+          </Button>
         </CardContent>
       </Card>
     </Grid>
