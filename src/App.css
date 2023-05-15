@@ -29,6 +29,9 @@
   background-color: #e0f1fd;
 }
 
+.thumb-pokemon {
+}
+
 .thumb-container {
   display: flex;
   flex-direction: column;
@@ -41,4 +44,34 @@
   min-width: 160px;
   text-align: center;
   box-shadow: 0 3px 15px rgba(0, 0, 0, 0.089);
+}
+
+.viewPokemonGrid {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 0;
+}
+
+.progressBar {
+  width: 60%;
+  border-radius: 2.5rem;
+  background-color: whitesmoke;
+}
+
+.fillingBar {
+  height: 100%;
+  border-radius: 2.5rem;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+
+@media only screen and (max-width: 600px) {
+  .mobileStats {
+    display: flex;
+    flex-direction: column;
+  }
+  .progressBar {
+    width: 100%;
+  }
 }

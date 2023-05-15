@@ -6,6 +6,17 @@ const BASE_URL = "https://pokeapi.co/api/v2";
 export interface PokemonInfo {
   id: string;
   name: string;
+  height: number;
+  weight: number;
+  base_happiness: number;
+  base_experience: number;
+  capture_rate: number;
+  growth_rate: {
+    name: string;
+  };
+  habitat: {
+    name: string;
+  };
   sprites: {
     other: {
       dream_world: {
@@ -17,6 +28,13 @@ export interface PokemonInfo {
     [0]: {
       type: {
         name: string;
+        // type
+      };
+    };
+    [1]: {
+      type: {
+        name: string;
+        // type
       };
     };
   };
@@ -33,6 +51,47 @@ export interface PokemonInfo {
       base_stat: number;
       //DEFENCE
     };
+    [3]: {
+      base_stat: number;
+      //SPECIAL ATTACK
+    };
+    [4]: {
+      base_stat: number;
+      //SPECIAL DEFENCE
+    };
+    [5]: {
+      base_stat: number;
+      //SPEED
+    };
+  };
+  abilities: {
+    [0]: {
+      ability: {
+        name: string;
+      };
+    };
+    [1]: {
+      ability: {
+        name: string;
+      };
+    };
+  };
+  moves: {
+    [0]: {
+      move: {
+        name: string;
+      };
+    };
+    [11]: {
+      move: {
+        name: string;
+      };
+    };
+    [22]: {
+      move: {
+        name: string;
+      };
+    };
   };
 }
 
@@ -42,4 +101,8 @@ export function pokemonCall(pokemon: any) {
 
 export function PokemonById(id: string) {
   return fetchAndParse(`${BASE_URL}/pokemon/${id}`);
+}
+
+export function PokemonSpecies(id: string) {
+  return fetchAndParse(`${BASE_URL}/pokemon-species/${id}`);
 }

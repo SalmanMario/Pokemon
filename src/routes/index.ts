@@ -5,7 +5,8 @@ import { useNavigate } from "react-router-dom";
 export const routes = {
   root: () => "/",
   pokemons: () => "/pokemons",
-  pokemonById: (p: { id: string; name: string }) => `/pokemon/${p.id}`,
+  // pokemonById: (p: { id: string; name: string }) => `/pokemon/${p.id}`,
+  pokemonById: (p: { id: string }) => `/pokemon/${p.id}`,
   // p este un obiect cu prop id
 };
 

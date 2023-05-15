@@ -13,7 +13,7 @@ export function RoutesPages() {
         <Route element={<Applayout />}>
           <Route path={route(routes.root)} element={<Mainpage />} />
           <Route path={route(routes.pokemons)} element={<Pokemons />} />
-          <Route path={route(routes.pokemonById, ["id", "name"])} element={<ViewPokemon />} />
+          <Route path={route(routes.pokemonById, ["id"])} element={<ViewPokemon />} />
         </Route>
       </Routes>
     </ThemePalette>

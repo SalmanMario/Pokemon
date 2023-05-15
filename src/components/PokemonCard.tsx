@@ -10,7 +10,7 @@ import ShieldIcon from "@mui/icons-material/Shield";
 import { RiSwordLine } from "react-icons/ri";
 import { routes, useNavigation } from "../routes";
 
-export default function PokemonCard({ data }: { data: PokemonInfo }) {
+export function PokemonCard({ data }: { data: PokemonInfo }) {
   const style = `thumb-container ${data.types[0].type.name}`;
   const { navigate } = useNavigation();
 
@@ -72,7 +72,7 @@ export default function PokemonCard({ data }: { data: PokemonInfo }) {
             <Typography variant="h6">{data.stats[2].base_stat}</Typography>
           </Box>
           <Button onClick={goToPokemon} variant="contained" fullWidth>
-            View Pokemons
+            View Pokemon
           </Button>
         </CardContent>
       </Card>
