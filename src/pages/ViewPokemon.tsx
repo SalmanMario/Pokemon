@@ -44,7 +44,7 @@ export function ViewPokemon() {
         if (speciesData.evolution_chain) {
           fetchAndParse(speciesData.evolution_chain.url).then((evolution_chain) => {
             const evolutionChains = recursiveChainMapping(evolution_chain.chain);
-            console.log({ evolutionChains });
+            // console.log({ evolutionChains });
             setEvolutions(evolutionChains);
           });
         }

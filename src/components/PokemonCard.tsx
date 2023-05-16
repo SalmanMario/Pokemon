@@ -31,7 +31,17 @@ export function PokemonCard({ data }: { data: PokemonInfo }) {
         />
         <CardContent>
           <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", mb: 2 }}>
-            <Typography gutterBottom variant="h5" component="div">
+            <Typography
+              sx={{
+                height: "2rem",
+                lineHeight: "2rem",
+                textOverflow: "ellipsis",
+                overflow: "hidden",
+              }}
+              gutterBottom
+              variant="h5"
+              component="div"
+            >
               {data.name.charAt(0).toUpperCase() + data.name.slice(1)}
             </Typography>
             <Typography gutterBottom variant="h5" component="div">
@@ -64,7 +74,7 @@ export function PokemonCard({ data }: { data: PokemonInfo }) {
               alignItems: "center",
               flexDirection: "row",
               textAlign: "center",
-              mb: 2,
+              mb: 4,
             }}
           >
             <Typography variant="h6">{data.stats[0].base_stat}</Typography>

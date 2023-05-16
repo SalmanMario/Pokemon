@@ -28,8 +28,8 @@
 .water {
   background-color: #e0f1fd;
 }
-
-.thumb-pokemon {
+.fighting {
+  background-color: #f3cbd0;
 }
 
 .thumb-container {
@@ -66,6 +66,13 @@
   justify-content: center;
 }
 
+.imageContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
 @media only screen and (max-width: 600px) {
   .mobileStats {
     display: flex;
@@ -74,4 +81,11 @@
   .progressBar {
     width: 100%;
   }
+  .mobileEvolution {
+    display: flex;
+    flex-direction: column;
+  }
+}
+a.MuiTypography-root.MuiTypography-h5.MuiTypography-noWrap.css-rd5w51-MuiTypography-root {
+  color: #ffebee;
 }

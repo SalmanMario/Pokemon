@@ -11,6 +11,10 @@ export interface PokemonInfo {
   base_happiness: number;
   base_experience: number;
   capture_rate: number;
+  hatch_counter: number;
+  shape: {
+    name: string;
+  };
   growth_rate: {
     name: string;
   };
@@ -82,12 +86,12 @@ export interface PokemonInfo {
         name: string;
       };
     };
-    [11]: {
+    [1]: {
       move: {
         name: string;
       };
     };
-    [22]: {
+    [2]: {
       move: {
         name: string;
       };
@@ -106,3 +110,5 @@ export function PokemonById(id: string) {
 export function PokemonSpecies(id: string) {
   return fetchAndParse(`${BASE_URL}/pokemon-species/${id}`);
 }
+
+//1281 Pokemons
