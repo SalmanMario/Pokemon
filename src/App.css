@@ -2,7 +2,25 @@
   background-color: rgb(148, 81, 81);
 }
 .ghost {
-  background-color: rgb(247, 247, 247);
+  background-color: rgb(233, 231, 231);
+}
+.steel {
+  background-color: #c9cdcf;
+}
+.psychic {
+  background-color: #fae8cf;
+}
+.ground {
+  background-color: #ad8c6a;
+}
+.dark {
+  background-color: #676563;
+}
+.dragon {
+  background-color: #afaa8a;
+}
+.ice {
+  background-color: #8be7e5;
 }
 .electric {
   background-color: rgb(255, 255, 161);
@@ -14,7 +32,7 @@
   background-color: #e0a7f6;
 }
 .normal {
-  background-color: #f4f4f4;
+  background-color: #e1d8d8;
 }
 .fairy {
   background-color: rgba(255, 192, 203, 0.863);

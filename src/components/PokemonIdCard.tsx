@@ -1,5 +1,5 @@
 import { Box, Grid, Typography } from "@mui/material";
-import { PokemonInfo } from "../services/pokemonCall";
+import { PokemonInfo } from "../services/PokemonCall";
 import "../App.css";
 import { useEffect, useState } from "react";
 import { fetchAndParse } from "../services/fetchAndParse";
