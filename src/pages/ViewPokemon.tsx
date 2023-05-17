@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { PokemonById, PokemonSpecies } from "../services/PokemonCall";
 import { AppRouteParams } from "../routes";
 import { Box } from "@mui/material";
 import { ShowPokemonId } from "../components/ShowPokemonId";
 import { fetchAndParse } from "../services/fetchAndParse";
+import { PokemonById, PokemonSpecies } from "../services/PokemonCall";
 
 function recursiveChainMapping(chain: any, result = [] as any[]): any {
   // returneaza elementele trecute + chain-ul curent
