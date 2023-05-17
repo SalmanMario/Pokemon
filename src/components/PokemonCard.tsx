@@ -2,7 +2,7 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { PokemonInfo } from "../services/PokemonCall";
+import { PokemonInfo } from "../services/pokemon";
 import { Box, Button, Grid } from "@mui/material";
 import "../App.css";
 import FavoriteIcon from "@mui/icons-material/Favorite";

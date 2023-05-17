@@ -4,7 +4,7 @@ import { AppRouteParams } from "../routes";
 import { Box } from "@mui/material";
 import { ShowPokemonId } from "../components/ShowPokemonId";
 import { fetchAndParse } from "../services/fetchAndParse";
-import { PokemonById, PokemonSpecies } from "../services/PokemonCall";
+import { PokemonById, PokemonSpecies } from "../services/pokemon";
 
 function recursiveChainMapping(chain: any, result = [] as any[]): any {
   // returneaza elementele trecute + chain-ul curent

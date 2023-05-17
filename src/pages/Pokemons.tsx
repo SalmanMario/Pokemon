@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { PokemonInfo, PokemonCall } from "../services/PokemonCall";
+import { PokemonInfo, pokemonCall } from "../services/pokemon";
 import { fetchAndParse } from "../services/fetchAndParse";
 import { Box, CircularProgress, Pagination } from "@mui/material";
 import { ShowPokemon } from "../components/ShowPokemon";
@@ -66,7 +66,7 @@ export function Pokemons() {
     const limit = Math.min(DESIRED_LIMIT - offset, LIMIT_PER_PAGE);
     const url = `${BASE_URL}pokemon?limit=${limit}&offset=${offset}`;
     const pokemons = await fetchAndParse(url);
-    const allPokemons = await Promise.all(pokemons.results.map(PokemonCall));
+    const allPokemons = await Promise.all(pokemons.results.map(pokemonCall));
     setTotalCount(DESIRED_LIMIT);
     console.log({ allPokemons });
     return allPokemons;

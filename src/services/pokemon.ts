@@ -99,7 +99,7 @@ export interface PokemonInfo {
   };
 }
 
-export function PokemonCall(pokemon: any): Promise<PokemonInfo[]> {
+export function pokemonCall(pokemon: any): Promise<PokemonInfo[]> {
   return fetchAndParse(`${BASE_URL}/pokemon/${pokemon.name}`);
 }
 

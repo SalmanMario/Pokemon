@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import { PokemonInfo } from "../services/PokemonCall";
+import { PokemonInfo } from "../services/pokemon";
 import { PokemonIdCard } from "./PokemonIdCard";
 
 interface ShowPokemonIdProps {
