@@ -59,7 +59,6 @@ export function Pokemons() {
     resetOn: "",
   });
 
-  const [pokemonData, setPokemonData] = useState<PokemonInfo[]>([]);
   const [totalCount, setTotalCount] = useState(0);
 
   async function getAllPokemons(): Promise<PokemonInfo[]> {
@@ -68,7 +67,6 @@ export function Pokemons() {
     const url = `${BASE_URL}pokemon?limit=${limit}&offset=${offset}`;
     const pokemons = await fetchAndParse(url);
     const allPokemons = await Promise.all(pokemons.results.map(PokemonCall));
-    setPokemonData(allPokemons);
     setTotalCount(DESIRED_LIMIT);
     console.log({ allPokemons });
     return allPokemons;
@@ -96,7 +94,7 @@ export function Pokemons() {
 
   const totalPages = Math.ceil(totalCount / LIMIT_PER_PAGE);
 
-  const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
+  const handleChange = (_event: React.ChangeEvent<unknown>, value: number) => {
     setPageNumber(value);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
