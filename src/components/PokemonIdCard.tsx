@@ -1,4 +1,4 @@
-import { Box, Grid, Typography } from "@mui/material";
+import { Box, Button, Grid, Typography } from "@mui/material";
 import { PokemonInfo } from "../services/pokemon";
 import "../App.css";
 import { useEffect, useState } from "react";
@@ -23,6 +23,14 @@ function RenderEvolution({ evolution, style }: { evolution: any; style: string }
   if (!pokemon) {
     return <></>;
   }
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <Link style={{ textDecoration: "none", color: "#f44336" }} to={routes.pokemonById({ id: pokemon.id })}>
       <Box textAlign={"center"}>
@@ -31,7 +39,7 @@ function RenderEvolution({ evolution, style }: { evolution: any; style: string }
         </Typography>
       </Box>
       {pokemon && (
-        <Box>
+        <Button onClick={scrollToTop}>
           <Box
             className={style}
             sx={{
@@ -49,7 +57,7 @@ function RenderEvolution({ evolution, style }: { evolution: any; style: string }
               src={pokemon.sprites.other.dream_world.front_default}
             />
           </Box>
-        </Box>
+        </Button>
       )}
     </Link>
   );

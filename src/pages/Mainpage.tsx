@@ -29,7 +29,7 @@ export function Mainpage() {
         </Typography>
       </Box>
       <Typography textAlign={"center"} variant="h5">
-        If you want to continue and explore this website please prease one of the buttons or click on the navbar.
+        If you want to continue and explore this website please press one of the buttons or click on the navbar.
       </Typography>
       <Box sx={{ my: 2, display: "flex", justifyContent: "space-around" }}>
         <Button onClick={goToPokemons} variant="contained">

@@ -9,7 +9,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
+import CatchingPokemonIcon from "@mui/icons-material/CatchingPokemon";
 import { routes, useNavigation } from "../routes";
 import "../App.css";
 
@@ -40,11 +40,18 @@ export function Navbar() {
     navigate(routes.pokemonById, { id: randomID.toString() });
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <AppBar position="sticky">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
+          <CatchingPokemonIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
           <Typography
             variant="h5"
             noWrap
@@ -101,9 +108,10 @@ export function Navbar() {
               <MenuItem onClick={randomPokemon}>
                 <Typography textAlign="center">Random Pokemon</Typography>
               </MenuItem>
+              <MenuItem onClick={scrollToTop}>Scroll to Top</MenuItem>
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
+          <CatchingPokemonIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
           <Typography
             variant="h5"
             noWrap
@@ -120,7 +128,7 @@ export function Navbar() {
               textDecoration: "none",
             }}
           >
-            LOGO
+            PokeDex
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             <Button sx={{ my: 2, color: "white" }} onClick={goToHome}>
@@ -131,6 +139,11 @@ export function Navbar() {
             </Button>
             <Button sx={{ my: 2, color: "white" }} onClick={randomPokemon}>
               Random Pokemon
+            </Button>
+          </Box>
+          <Box sx={{ flexGrow: 0, display: { xs: "none", md: "flex" } }}>
+            <Button sx={{ my: 2, color: "white" }} onClick={scrollToTop}>
+              Scroll to Top
             </Button>
           </Box>
         </Toolbar>

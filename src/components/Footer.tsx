@@ -8,7 +8,7 @@ export function Footer() {
       justifyContent="center"
       width={"100%"}
     >
-      <Typography sx={{ fontSize: 20, marginTop: "auto" }} variant="body2">
+      <Typography sx={{ fontSize: 20, marginTop: "auto", textAlign: "center" }} variant="body2">
         @PokeDex 2023 built by Salman Mario
       </Typography>
     </Box>
