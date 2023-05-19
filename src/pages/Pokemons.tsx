@@ -1,114 +1,43 @@
-import { useEffect, useState } from "react";
-import { PokemonInfo, pokemonCall } from "../services/pokemon";
-import { fetchAndParse } from "../services/fetchAndParse";
-import { Box, CircularProgress, Pagination } from "@mui/material";
+import { Box, CircularProgress, InputAdornment, Pagination, TextField } from "@mui/material";
 import { ShowPokemon } from "../components/ShowPokemon";
-import { useSearchParams } from "react-router-dom";
-import { useFetchData } from "../hooks/useFetchData";
-
-interface Querys<T> {
-  key: string;
-  initialValue: T;
-  transformer: any;
-  resetOn: string;
-}
-
-const BASE_URL = "https://pokeapi.co/api/v2/";
-const LIMIT_PER_PAGE = 16;
-const DESIRED_LIMIT = 649;
-
-function useQueryParams<T>({ key, initialValue, transformer, resetOn }: Querys<T>) {
-  const [searchParams, setSearchParams] = useSearchParams();
-
-  const currentElement = transformer(searchParams.get(key) ?? initialValue);
-
-  const [state, setState] = useState(currentElement);
-
-  useEffect(() => {
-    setState(currentElement);
-  }, [currentElement]);
-
-  function handleStateChange(newValue: any) {
-    setState(newValue);
-    setSearchParams((query) => {
-      if (query.has(key)) {
-        query.set(key, newValue);
-      } else {
-        query.append(key, newValue);
-      }
-      if (resetOn === transformer(newValue)) {
-        query.delete(key);
-      }
-      return query;
-    });
-
-    if (key === "page" && newValue === 1) {
-      const urlWithoutSearchParam = `${location.pathname}`;
-      window.history.replaceState({}, "", urlWithoutSearchParam);
-    }
-  }
-
-  return [state, handleStateChange];
-}
+import { usePagedPokemon } from "../hooks/usePagedPokemon";
 
 export function Pokemons() {
-  const [pageNumber, setPageNumber] = useQueryParams({
-    initialValue: 1,
-    key: "page",
-    transformer: Number,
-    resetOn: "",
-  });
+  // fetch la toti pokemonii
+  // await Promise.all(pokemons.results.map(pokemonCall)); per pagina SAU retreive din cache
 
-  const [totalCount, setTotalCount] = useState(0);
-
-  async function getAllPokemons(): Promise<PokemonInfo[]> {
-    const offset = (pageNumber - 1) * LIMIT_PER_PAGE;
-    const limit = Math.min(DESIRED_LIMIT - offset, LIMIT_PER_PAGE);
-    const url = `${BASE_URL}pokemon?limit=${limit}&offset=${offset}`;
-    const pokemons = await fetchAndParse(url);
-    const allPokemons = await Promise.all(pokemons.results.map(pokemonCall));
-    setTotalCount(DESIRED_LIMIT);
-    console.log({ allPokemons });
-    return allPokemons;
-  }
-
-  const {
-    data: pokemonDetails,
-    loading,
-    error,
-  } = useFetchData(
-    {
-      fetcher: () => getAllPokemons(),
-      initialData: undefined, // Use undefined as initialData
-    },
-    [pageNumber]
-  );
-
-  if (loading || !pokemonDetails) {
-    return <CircularProgress />;
-  }
-
-  if (error) {
-    console.log(error);
-  }
-
-  const totalPages = Math.ceil(totalCount / LIMIT_PER_PAGE);
+  const { pokemonDetails, loading, totalPages, handlePageChange, pageNumber, handleSearchChange, searchText } =
+    usePagedPokemon();
 
   const handleChange = (_event: React.ChangeEvent<unknown>, value: number) => {
-    setPageNumber(value);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    handlePageChange(value);
+    // window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
     <Box>
-      <ShowPokemon pokemonDisplay={pokemonDetails} />
-      <Pagination
-        color="primary"
-        sx={{ ml: 8, my: 1 }}
-        count={totalPages}
-        page={pageNumber}
-        onChange={handleChange}
-      ></Pagination>
+      <TextField
+        label="search"
+        value={searchText}
+        onChange={(e) => handleSearchChange(e.target.value)}
+        InputProps={{
+          startAdornment: <InputAdornment position="start">{/* <SearchIcon /> */}</InputAdornment>,
+        }}
+      ></TextField>
+      {!pokemonDetails ? (
+        <CircularProgress />
+      ) : (
+        <>
+          <ShowPokemon pokemonDisplay={pokemonDetails} />
+          <Pagination
+            color="primary"
+            sx={{ ml: 8, my: 1 }}
+            count={totalPages}
+            page={pageNumber}
+            onChange={handleChange}
+          ></Pagination>
+        </>
+      )}
     </Box>
   );
 }
