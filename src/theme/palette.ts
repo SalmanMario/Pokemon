@@ -7,6 +7,10 @@ export const palette = {
     },
   },
   typography: {
+    h3: {
+      fontFamily: "Inter",
+      fontWeight: 700,
+    },
     h4: {
       fontFamily: "Inter",
       fontWeight: 700,

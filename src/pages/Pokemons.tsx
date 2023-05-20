@@ -1,6 +1,7 @@
-import { Box, CircularProgress, Fab, InputAdornment, Pagination, TextField } from "@mui/material";
+import { Box, CircularProgress, Grid, InputAdornment, Pagination, TextField, Typography } from "@mui/material";
 import { ShowPokemon } from "../components/ShowPokemon";
 import { usePagedPokemon } from "../hooks/usePagedPokemon";
+import "../App.css";
 
 export function Pokemons() {
   // fetch la toti pokemonii
@@ -16,15 +17,23 @@ export function Pokemons() {
 
   return (
     <Box>
-      <TextField
-        label="search"
-        value={searchText}
-        onChange={(e) => handleSearchChange(e.target.value)}
-        sx={{ mt: 4 }}
-        InputProps={{
-          startAdornment: <InputAdornment position="start">{/* <SearchIcon /> */}</InputAdornment>,
-        }}
-      ></TextField>
+      <Grid mt={4} className="gridPokemonMobile" container>
+        <Grid sx={{ display: "flex", alignItems: "center" }} item md={6}>
+          <Typography variant="h3">PokeDex</Typography>
+        </Grid>
+        <Grid sx={{ justifyContent: "end", display: "flex", alignItems: "center" }} item md={6}>
+          <TextField
+            label="search"
+            placeholder="find pokemon"
+            value={searchText}
+            onChange={(e) => handleSearchChange(e.target.value)}
+            InputProps={{
+              startAdornment: <InputAdornment position="start">{/* <SearchIcon /> */}</InputAdornment>,
+            }}
+          ></TextField>
+        </Grid>
+      </Grid>
+
       {!pokemonDetails ? (
         <CircularProgress />
       ) : (

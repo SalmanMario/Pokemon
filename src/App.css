@@ -91,6 +91,11 @@
   flex-direction: column;
 }
 
+.gridPokemonMobile {
+  display: flex;
+  justify-content: center;
+}
+
 @media only screen and (max-width: 600px) {
   .mobileStats {
     display: flex;
@@ -102,6 +107,10 @@
   .mobileEvolution {
     display: flex;
     flex-direction: column;
+  }
+  .gridPokemonMobile {
+    display: flex;
+    justify-content: center;
   }
 }
 a.MuiTypography-root.MuiTypography-h5.MuiTypography-noWrap.css-rd5w51-MuiTypography-root {
