@@ -1,4 +1,4 @@
-import { Box, CircularProgress, InputAdornment, Pagination, TextField } from "@mui/material";
+import { Box, CircularProgress, Fab, InputAdornment, Pagination, TextField } from "@mui/material";
 import { ShowPokemon } from "../components/ShowPokemon";
 import { usePagedPokemon } from "../hooks/usePagedPokemon";
 
@@ -20,6 +20,7 @@ export function Pokemons() {
         label="search"
         value={searchText}
         onChange={(e) => handleSearchChange(e.target.value)}
+        sx={{ mt: 4 }}
         InputProps={{
           startAdornment: <InputAdornment position="start">{/* <SearchIcon /> */}</InputAdornment>,
         }}

@@ -12,6 +12,8 @@ import MenuItem from "@mui/material/MenuItem";
 import CatchingPokemonIcon from "@mui/icons-material/CatchingPokemon";
 import { routes, useNavigation } from "../routes";
 import "../App.css";
+import { Fab } from "@mui/material";
+import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 
 export function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
@@ -106,7 +108,6 @@ export function Navbar() {
               <MenuItem onClick={randomPokemon}>
                 <Typography textAlign="center">Random Pokemon</Typography>
               </MenuItem>
-              <MenuItem onClick={scrollToTop}>Scroll to Top</MenuItem>
             </Menu>
           </Box>
           <CatchingPokemonIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
@@ -137,10 +138,10 @@ export function Navbar() {
               Random Pokemon
             </Button>
           </Box>
-          <Box sx={{ flexGrow: 0, display: { xs: "none", md: "flex" } }}>
-            <Button sx={{ my: 2, color: "white" }} onClick={scrollToTop}>
-              Scroll to Top
-            </Button>
+          <Box>
+            <Fab onClick={scrollToTop} size="small" aria-label="add">
+              <ArrowUpwardIcon />
+            </Fab>
           </Box>
         </Toolbar>
       </Container>
