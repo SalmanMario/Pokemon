@@ -42,19 +42,15 @@ export function useQueryParams<T>({
 
     setSearchParams((query) => {
       if (resetOn === transformer(newValue)) {
-        console.log(`removing ${key}`);
         query.delete(key);
         return query;
       }
       if (query.has(key)) {
-        console.log(`update ${key}`);
-
         query.set(key, newValue);
       } else {
-        console.log(`adding ${key}`);
         query.append(key, newValue);
       }
-      console.log({ resetOn, newValue, transformed: transformer(newValue) });
+      // console.log({ resetOn, newValue, transformed: transformer(newValue) });
       return query;
     });
   }

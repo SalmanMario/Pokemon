@@ -7,6 +7,7 @@ export const routes = {
   pokemons: () => "/pokemons",
   // pokemonById: (p: { id: string; name: string }) => `/pokemon/${p.id}`,
   pokemonById: (p: { id: string }) => `/pokemon/${p.id}`,
+  error404: () => "/error404",
   // p este un obiect cu prop id
 };
 

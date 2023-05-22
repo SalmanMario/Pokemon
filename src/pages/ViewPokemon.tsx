@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { AppRouteParams } from "../routes";
+import { AppRouteParams, routes, useNavigation } from "../routes";
 import { Box } from "@mui/material";
 import { ShowPokemonId } from "../components/ShowPokemonId";
 import { fetchAndParse } from "../services/fetchAndParse";
@@ -33,6 +33,12 @@ function recursiveChainMapping(chain: any, result = [] as any[]): any {
 }
 
 export function ViewPokemon() {
+  const { navigate } = useNavigation();
+
+  const goToErrorPage = () => {
+    navigate(routes.error404);
+  };
+
   const { id = "" } = useParams<AppRouteParams["pokemonById"]>();
   const [pokemon, setPokemon] = useState<any>(null);
   const [evolutions, setEvolutions] = useState<any[]>([]);
@@ -49,7 +55,10 @@ export function ViewPokemon() {
           });
         }
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        console.log(error);
+        goToErrorPage();
+      });
   }, [id]);
 
   return <Box>{pokemon && <ShowPokemonId evolutions={evolutions} pokemonId={pokemon} />}</Box>;

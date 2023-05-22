@@ -40,6 +40,7 @@ export function Navbar() {
     const randomID = Math.floor(Math.random() * 648) + 1; // Generate a random ID within the desired range
 
     navigate(routes.pokemonById, { id: randomID.toString() });
+    scrollToTop();
   };
 
   const scrollToTop = () => {

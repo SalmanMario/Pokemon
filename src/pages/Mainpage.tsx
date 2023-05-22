@@ -25,7 +25,7 @@ export function Mainpage() {
       </Typography>
       <Box sx={{ my: 2 }}>
         <Typography textAlign={"center"} variant="h5">
-          Here you can find usefull information about pokemons.
+          Here you can find usefull information about 649 pokemons.
         </Typography>
       </Box>
       <Typography textAlign={"center"} variant="h5">
