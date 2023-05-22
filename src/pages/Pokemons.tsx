@@ -7,7 +7,7 @@ export function Pokemons() {
   // fetch la toti pokemonii
   // await Promise.all(pokemons.results.map(pokemonCall)); per pagina SAU retreive din cache
 
-  const { pokemonDetails, loading, totalPages, handlePageChange, pageNumber, handleSearchChange, searchText } =
+  const { pokemonDetails, totalPages, handlePageChange, pageNumber, handleSearchChange, searchText } =
     usePagedPokemon();
 
   const handleChange = (_event: React.ChangeEvent<unknown>, value: number) => {

@@ -1,6 +1,6 @@
-import { useEffect, useMemo, useRef } from "react";
+import { useMemo } from "react";
 import { fetchAndParse } from "../services/fetchAndParse";
-import { PokemonInfo, pokemonCall } from "../services/pokemon";
+import { pokemonCall, PokemonInfo } from "../services/pokemon";
 import { useFetchData } from "./useFetchData";
 import { useQueryParams } from "./useQueryParams";
 import { useSearchParams } from "react-router-dom";
@@ -24,7 +24,6 @@ export function usePagedPokemon() {
     resetOn: 1,
   });
 
-  //   adauga debounce la searchText, sa se apeleze doar cand termini de tastat
   const [searchText, setSearchText] = useQueryParams({
     initialValue: "",
     key: "search",
@@ -37,19 +36,15 @@ export function usePagedPokemon() {
     initialData: [],
   });
 
-  // useRef defineste o variabila imutabila, care nu da trigger la un rerender
-
   const { data: pokemonDetails, loading } = useFetchData<PokemonInfo[]>(
     {
       fetcher: async () => {
-        console.log({ searchText, pageNumber, pokemons });
         const allPokemons = await Promise.all(
           pokemons.results
             .filter((p: any) => p.name.includes(searchText))
             .slice((pageNumber - 1) * LIMIT_PER_PAGE, pageNumber * LIMIT_PER_PAGE)
             .map(pokemonCall)
         );
-        console.log(allPokemons);
         return allPokemons;
       },
       initialData: [],
@@ -80,12 +75,15 @@ export function usePagedPokemon() {
       return query;
     });
   }
+
   return {
     handlePageChange,
     handleSearchChange,
     searchText,
     pokemonDetails,
     loading,
+    setSearchText,
+    searchParams,
     totalPages,
     pageNumber,
   };
